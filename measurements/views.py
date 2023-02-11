@@ -33,3 +33,8 @@ def measurement_view(request, pk):
         measurement_dto = ms.update_measurement(pk, json.loads(request.body))
         measurement = serializers.serialize('json', [measurement_dto,])
         return HttpResponse(measurement, 'application/json')
+    
+    if request.method == 'DELETE':
+        measurement_dto = ms.delete_measurement(pk)
+        response= u'Successful delete'
+        return HttpResponse(response)
